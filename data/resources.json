@@ -1,0 +1,43 @@
+[
+    {
+      "type": "tree",
+      "radius": 45,
+      "health": 100
+    },
+    {
+      "type": "tree2",
+      "radius": 35,
+      "health": 100
+     
+    },
+    {
+      "type": "tree3",
+      "radius": 28,
+      "health": 100
+    },
+    {
+      "type": "rock",
+      "radius": 25,
+      "health": 100
+    },
+    {
+      "type": "rock2",
+      "radius": 25,
+      "health": 100
+    },
+    {
+      "type": "rock3",
+      "radius": 25,
+      "health": 150
+    },
+    {
+      "type": "gold",
+      "radius": 40,
+      "health": 200
+    },
+    {
+      "type": "crystal",
+      "radius": 30,
+      "health": 250
+    }
+  ]

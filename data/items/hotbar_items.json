@@ -1,0 +1,26 @@
+[
+    {
+        "type": "hand",
+        "stam_cost": 0,
+        "attack_arc": 0.5,
+        "attack_arc_start": 0,
+        "attack_radius": 35,
+        "strike_time" : 2,
+        "use_speed": 6,
+        "tree_dmg": 1,
+        "ore_dmg": 1,
+        "attack": 6
+    },
+   {
+    "type": "goldensword",
+    "stam_cost": 0,
+    "attack_arc": 2.2,
+    "attack_arc_start": 1,
+    "attack_radius": 35,
+    "strike_time" : 2,
+    "use_speed": 11,
+    "tree_dmg": 2,
+    "ore_dmg": 2,
+    "attack": 20
+  }
+]

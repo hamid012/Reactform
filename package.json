@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@colyseus/auth": "^0.16.4",
+    "@colyseus/core": "^0.16.7",
+    "@colyseus/monitor": "^0.16.2",
+    "@colyseus/redis-driver": "^0.16.1",
+    "@colyseus/redis-presence": "^0.16.1",
+    "@colyseus/ws-transport": "^0.16.3",
+    "colyseus": "^0.16.3",
+    "express": "^4.21.2",
+    "firebase": "^11.6.0",
+    "pixi.js": "^8.7.1",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@colyseus/schema": "^3.0.13",
+    "@types/express": "^5.0.0",
+    "typescript": "^5.7.3"
+  }
+}

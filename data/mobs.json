@@ -1,0 +1,79 @@
+[
+    {
+      "type": "spider",
+      "passive": false,
+      "attack": 5,
+      "attack_radius": 20,
+      "attack_arc": 0.2,
+      "attack_arc_displacment": 0,
+      "health": 100,
+      "max_health": 100,
+      "aspeed": 30,
+      "strike_time": 4,
+      "speed": 1.8,
+      "radius": 20,
+      "drops": [
+        {"item": "web", "minQuantity": 1, "maxQuantity": 5, "chance": 1.0}
+      ]
+    },
+    {
+      "type": "redspider",
+      "passive": false,
+      "attack": 40,
+      "attack_radius": 25,
+      "attack_arc": 0.3,
+      "attack_arc_displacment": 0,
+      "health": 1000,
+      "aspeed": 20,
+      "strike_time": 10,
+      "max_health": 700,
+      "speed": 3.3,
+      "radius": 30,
+      "canShoot": true,
+      "projectileType": "fireball",
+      "projectileSpeed": 11,
+      "projectileRadius": 6,
+      "projectileDamage": 20,
+      "projectileLifetime": 40,
+      "shootCooldown": 30,
+      "drops": [
+        {"item": "dust", "minQuantity": 1, "maxQuantity": 5, "chance": 1.0},
+        {"item": "web", "minQuantity": 1, "maxQuantity": 5, "chance": 0.5}
+      ]
+    },
+      {
+        "type": "bear",
+        "passive": false,
+        "attack": 5,
+        "attack_radius": 20,
+        "attack_arc": 0.2,
+        "attack_arc_displacment": 0,
+        "health": 100,
+        "max_health": 100,
+        "aspeed": 30,
+        "strike_time": 4,
+        "speed": 1.8,
+        "radius": 20,
+        "drops": [
+            {"item": "fur", "minQuantity": 3, "maxQuantity": 5, "chance": 1.0},
+            {"item": "gold", "exactQuantity": 1, "chance": 0.2}
+        ]
+      },
+      {
+        "type": "polarbear",
+        "passive": false,
+        "attack": 5,
+        "attack_radius": 20,
+        "attack_arc": 0.2,
+        "attack_arc_displacment": 0,
+        "health": 100,
+        "max_health": 100,
+        "aspeed": 30,
+        "strike_time": 4,
+        "speed": 1.8,
+        "radius": 20,
+        "drops": [
+          {"item": "web", "minQuantity": 7, "maxQuantity": 20, "chance": 1.0}
+        ]
+      }
+  ]

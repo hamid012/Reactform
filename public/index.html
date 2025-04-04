@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Firebase UI -->
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    
+    <title>Jagar</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<script src="https://unpkg.com/colyseus.js@0.16.5/dist/colyseus.js"></script>
+<script src="https://pixijs.download/v8.8.0/pixi.min.js"></script>
+
+    
+    
+    <link href='index.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loading-content">
+        <img id="loading-title" src="img/title.png" alt="Jagar" />
+        <div class="loading-bar-container">
+            <div id="loading-bar"></div>
+        </div>
+        <div id="loading-text">Loading assets... <span id="loading-progress">0%</span></div>
+    </div>
+</div>
+<!--  
+<div id="firebaseui-auth-container"></div>
+<div id="loader">Loading...</div>
+-->
+<div class="main-container" id="main-container">
+  <!-- Game Title at the top -->
+  <div class="game-title">
+    <img src="img/title.png" alt="Jagar" />
+  </div>
+  
+  <!-- Main Content Area -->
+  <div class="content-wrapper">
+    <!-- Updates (Left Side) -->
+    <div class="box" id="updates">
+      <h2>Updates</h2>
+      <div class="updates-content">
+        <div class="update-item">
+          <span class="update-date">March 12, 2025</span>
+          <h3>Pre-beta release</h3>
+          <p>A very early and unstable version of the game, for people to view the game, give feedback, review and explore it</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Section (Login) -->
+    <div class="center-container">
+      <div id="landing" class="clickable">
+        <input type="text" id="nickname" placeholder="Enter Nickname" class="clickable" />
+        <input type="password" id="passkey" placeholder="Enter Passkey" class="clickable"/>
+        <button id="play" class="clickable">Play</button>
+      </div>
+    </div>
+
+    <!-- Advertisements (Right Side) -->
+    <div class="box" id="advertisements">
+      <h2>Early Access</h2>
+      <div class="ad-content">
+        <div class="feature-item">
+          <h3>Want a passkey?</h3>
+          <p>Join our discord <a href="https://discord.gg/RYM8nvUprH" target="_blank" class="discord-link">here</a> ! Where you will be able to purchase an early access pass for $3</p>
+        </div>
+        <div class="feature-item">
+          <h3>Want to support development?</h3>
+          <p>Support the devs on the discord ❤️</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom Section with Instructions and Discord -->
+  <div class="bottom-section">
+    <!-- Instructions -->
+    <div class="box" id="instructions">
+      <h2>How to Play</h2>
+      <div class="controls-list">
+        <div class="control-item">
+          <span class="key">WASD</span>
+          <span class="desc">Movement</span>
+        </div>
+        <div class="control-item">
+          <span class="key">Click</span>
+          <span class="desc">Attack</span>
+        </div>
+        <div class="control-item">
+          <span class="key">E</span>
+          <span class="desc">Interact</span>
+        </div>
+        <div class="control-item">
+          <span class="key">I</span>
+          <span class="desc">Inventory</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Discord Button -->
+    <div id="discord">
+      <a href="https://discord.gg/RYM8nvUprH" target="_blank" id="discord-button" class="clickable">
+        <img src="img/discord-icon.png" alt="Join Discord" />
+        <span>Join Discord</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+      <!-- Chat Input box-->
+      <div id="chat-container">
+        <div id="chat-toggle-button" title="Toggle between normal and team chat">🌐</div>
+        <input type="text" id="chat-input" placeholder="Press Enter to chat..." autocomplete="off"/>
+      </div>
+
+      <!-- Crafting UI -->
+      <div id="crafting-container">
+        <!-- Close button in top-right corner -->
+        <button id="close-crafting" class="close-button">×</button>
+        
+        <!-- Tabs for filtering categories -->
+        <div class="tabs">
+          <button class="tab active" data-category="weapons">Weapons</button>
+          <button class="tab" data-category="tools">Tools</button>
+          <button class="tab" data-category="offhands">Offhands</button>
+          <button class="tab" data-category="hats">Hats</button>
+          <button class="tab" data-category="special">Special</button>
+        </div>
+        
+        <div class="crafting-content">
+          <!-- Left side: Recipe List with scrolling -->
+          <div class="recipes-list">
+            <ul id="recipes-list-container">
+              <!-- Recipes will be populated dynamically -->
+            </ul>
+          </div>
+          
+          <!-- Right side: Recipe Details -->
+          <div class="recipe-details">
+            <div class="item-preview">
+              <img id="selected-item-image" src="" alt="">
+            </div>
+            <h3 id="selected-item-name">Select a recipe</h3>
+            <p id="selected-item-description">Select a recipe to see details.</p>
+            
+            <h4>Materials:</h4>
+            <div id="crafting-requirements">
+              <!-- Requirements will be added dynamically -->
+            </div>
+            
+            <button id="craft-button" disabled>Craft</button>
+          </div>
+        </div>
+      </div>
+
+<!-- Building UI -->
+<div id="building-container">
+  <!-- Close button in top-right corner -->
+  <button id="close-building" class="close-button">×</button>
+  
+  <!-- Tabs for filtering categories -->
+  <div class="tabs">
+    <button class="tab active" data-category="shelter">Shelter</button>
+    <button class="tab" data-category="defense">Defense</button>
+    <button class="tab" data-category="storage">Storage</button>
+    <button class="tab" data-category="production">Production</button>
+    <button class="tab" data-category="decoration">Decoration</button>
+  </div>
+  
+  <div class="building-content">
+    <!-- Left side: Building List with scrolling -->
+    <div class="buildings-list">
+      <ul id="buildings-list-container">
+        <!-- Buildings will be populated dynamically -->
+      </ul>
+    </div>
+    
+    <!-- Right side: Building Details -->
+    <div class="building-details">
+      <div class="item-preview">
+        <img id="selected-building-image" src="" alt="">
+      </div>
+      <h3 id="selected-building-name">Select a building</h3>
+      <p id="selected-building-description">Select a building to see details.</p>
+      
+      <h4>Requirements:</h4>
+      <div id="building-requirements">
+        <!-- Requirements will be added dynamically -->
+      </div>
+      
+      <button id="build-button" disabled>Build</button>
+    </div>
+  </div>
+</div>
+
+      <!-- Team Management UI -->
+<div id="team-container">
+  <div class="team-header">
+    <h2>Teams</h2>
+    <button id="close-team" class="close-button">×</button>
+  </div>
+  
+  <!-- Team List View (when not in a team) -->
+  <div id="team-list-state">
+    <div class="teams-list">
+      <ul id="teams-list-container">
+        <!-- Teams will be populated dynamically -->
+      </ul>
+    </div>
+    <div class="create-team">
+      <input type="text" id="team-name-input" placeholder="Enter team name" maxlength="20"/>
+      <button id="create-team-button">Create Team</button>
+    </div>
+  </div>
+  
+  <!-- Team Details View (when in a team) -->
+  <div id="team-details-state" style="display: none;">
+    <div class="team-info">
+      <h3 id="current-team-name">Team Name</h3>
+    </div>
+    <div class="members-list">
+      <ul id="members-list-container">
+        <!-- Members will be populated dynamically -->
+      </ul>
+    </div>
+    <div class="team-actions">
+      <button id="leave-team-button">Leave</button>
+    </div>
+  </div>
+</div>
+
+    <script  src="./main.js"></script>
+</body>
+</html>
